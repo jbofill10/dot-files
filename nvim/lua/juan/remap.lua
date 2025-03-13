@@ -1,4 +1,4 @@
--- basic vim keymaps
+-- basic vim stuff
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.foldcolumn = '1' -- '0' is not bad
@@ -27,7 +27,20 @@ vim.keymap.set('n', '<leader>tf', builtin.find_files, { desc = 'Telescope find f
 vim.keymap.set('n', '<leader>tg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>tb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>th', builtin.help_tags, { desc = 'Telescope help tags' })
-vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = 'Telescope git files' })
+vim.keymap.set('n', '<C-p>', function()
+    local file_dir = vim.fn.expand('%:p:h')
+    -- Get the git root directory using rev-parse
+    local git_root = vim.fn.system(string.format('cd %s && git rev-parse --show-toplevel', vim.fn.shellescape(file_dir)))
+
+    -- Remove trailing newline
+    git_root = string.gsub(git_root, '\n$', '')
+
+    -- Use git_root if valid, otherwise fall back to file_dir
+    local cwd = (vim.v.shell_error == 0 and git_root ~= '') and git_root or file_dir
+
+    require('telescope.builtin').git_files({ cwd = cwd })
+end, { desc = "git files" })
+
 
 
 -- buffers
@@ -72,10 +85,25 @@ vim.keymap.set("n", "zp", function()
 end, { desc = "Peek fold or show hover" })
 
 -- git
-vim.keymap.set('n', '<leader>gs', ':Neogit kind=floating<CR>', { desc = "git status" })
+vim.keymap.set('n', '<leader>gs', function()
+    local file_dir = vim.fn.expand('%:p:h')
+    -- You could store the original cwd to restore it later if needed
+    local original_cwd = vim.fn.getcwd()
+    vim.cmd('Neogit cwd=' .. file_dir .. ' kind=floating')
+    -- Restore original cwd if necessary
+    vim.cmd('cd ' .. original_cwd)
+end, { desc = "git status (file repo)" })
+
 vim.keymap.set('n', '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>', { desc = "show inline blame" })
 vim.keymap.set('n', '<leader>gi', ':Gitsigns preview_hunk<CR>', { desc = "show diff popup" })
 
 -- ufo
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+-- java
+vim.keymap.set('n', '<leader>jrm', ':JavaTestRunCurrentMethod<CR>', { desc = "Run current method" })
+vim.keymap.set('n', '<leader>jrc', ':JavaTestRunCurrentClass<CR>', { desc = "Run current method" })
+
+-- generic langauge server stuff
+vim.keymap.set('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>', { desc = "Show code actions" })

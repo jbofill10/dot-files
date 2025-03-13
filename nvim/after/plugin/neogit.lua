@@ -343,4 +343,3 @@ neogit.setup {
         },
     },
 }
-
