@@ -1,9 +1,21 @@
 -- basic vim keymaps
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.foldcolumn = '1' -- '0' is not bad
+vim.opt.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+vim.opt.foldlevelstart = 99
+vim.opt.incsearch = true
+vim.opt.scrolloff = 8
+vim.opt.updatetime = 50
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open netrw" })
 vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "Paste without yanking" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down center" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up center" })
+vim.keymap.set("n", "n", "nzzzv", { desc = "search to bottom keep center" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "search to top keep center" })
+vim.keymap.set("n", "<M-j>", ":cnext<CR>", { desc = "Go to next on quickfix" })
+vim.keymap.set("n", "<M-k>", ":cprev<CR>", { desc = "Go to next on quickfix" })
 
 -- navigation
 vim.keymap.set("n", "<leader>ee", ":Neotree source=filesystem position=float toggle<CR>", { desc = "Show file explorer" })
@@ -60,6 +72,10 @@ vim.keymap.set("n", "zp", function()
 end, { desc = "Peek fold or show hover" })
 
 -- git
-vim.keymap.set('n', '<leader>gs', ':Neogit<CR>', { desc = "git status" })
+vim.keymap.set('n', '<leader>gs', ':Neogit kind=floating<CR>', { desc = "git status" })
 vim.keymap.set('n', '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>', { desc = "show inline blame" })
 vim.keymap.set('n', '<leader>gi', ':Gitsigns preview_hunk<CR>', { desc = "show diff popup" })
+
+-- ufo
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
