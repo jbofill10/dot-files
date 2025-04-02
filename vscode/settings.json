@@ -1,0 +1,233 @@
+{
+    "workbench.iconTheme": "icons",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontLigatures": true,
+    "remote.SSH.remotePlatform": {
+        "192.168.0.111": "linux"
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "security.workspace.trust.untrustedFiles": "open",
+    "go.toolsManagement.autoUpdate": true,
+    "flake8.args": [
+        "--ignore",
+        "E203,E266,E501,W503",
+        "--max-line-length=88",
+        "--select=B,C,E,F,W,T4,B9",
+        "--max-complexity=18"
+    ],
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "java.cleanup.actions": [
+        "renameFileToType",
+        "addFinalModifier",
+        "organizeImports",
+        "addOverride",
+        "lambdaExpression"
+    ],
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java"
+    },
+    "vim.leader": "<Space>",
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-u>": true
+    },
+    "vim.smartRelativeLine": true,
+    "vim.hlsearch": true,
+    "editor.renderWhitespace": "all",
+    "files.trimTrailingWhitespace": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            // MOVEMENT
+            "before": [
+                "j"
+            ],
+            "after": [
+                "g",
+                "j"
+            ]
+        },
+        {
+            "before": [
+                "k"
+            ],
+            "after": [
+                "g",
+                "k"
+            ]
+        },
+        {
+            "before": [
+                "<C-d>"
+            ],
+            "after": [
+                "1",
+                "5",
+                "g",
+                "j",
+                "z",
+                "z"
+            ]
+        },
+        {
+            "before": [
+                "<C-u>"
+            ],
+            "after": [
+                "1",
+                "5",
+                "g",
+                "k",
+                "z",
+                "z"
+            ]
+        },
+        {
+            "before": [
+                "n"
+            ],
+            "after": [
+                "n",
+                "z",
+                "z"
+            ]
+        },
+        {
+            "before": [
+                "N"
+            ],
+            "after": [
+                "N",
+                "z",
+                "z"
+            ]
+        },
+        // BUFFERS
+        {
+            "before": [
+                "leader",
+                "b",
+                "h"
+            ],
+            "commands": [
+                ":bprevious"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "b",
+                "l"
+            ],
+            "commands": [
+                ":bnext"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "b",
+                "d"
+            ],
+            "commands": [
+                ":bdelete"
+            ]
+        },
+        // WINDOWS
+        {
+            "before": [
+                "leader",
+                "v"
+            ],
+            "commands": [
+                ":vsplit"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "s"
+            ],
+            "commands": [
+                ":split"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "h"
+            ],
+            "commands": [
+                "workbench.action.focusLeftGroup"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "j"
+            ],
+            "commands": [
+                "workbench.action.focusBelowGroup"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "k"
+            ],
+            "commands": [
+                "workbench.action.focusAboveGroup"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "l"
+            ],
+            "commands": [
+                "workbench.action.focusRightGroup"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        // toggle comment selection
+        {
+            "before": [
+                "leader",
+                "c"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        }
+    ],
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "workbench.activityBar.location": "hidden",
+    "vim.statusBarColorControl": true,
+    "zenMode.hideStatusBar": false,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f87",
+        "statusBar.noFolderBackground": "#005f87",
+        "statusBar.debuggingBackground": "#005f87",
+        "statusBar.foreground": "#ffffff",
+        "statusBar.debuggingForeground": "#ffffff"
+    },
+}
