@@ -35,7 +35,7 @@
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
     },
-}  "vim.leader": "<Space>",
+  "vim.leader": "<Space>",
   "vim.handleKeys": {
     "<C-d>": true,
     "<C-u>": true
