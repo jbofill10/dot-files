@@ -39,6 +39,7 @@ local colors = {
   bright_orange = "#fe8019",
 
   -- UI specific colors
+  fold_bg = "#252a28",   -- Very subtle fold background
   visual_bg = "#2f3f33",
   diff_add = "#3a3d21",
   diff_delete = "#462724",
