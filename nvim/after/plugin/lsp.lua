@@ -60,7 +60,7 @@ local configs = require("lspconfig.configs")
 if not configs.golangci_lint_ls then
 	configs.golangci_lint_ls = {
 		default_config = {
-			cmd = { "golangci-lint-langserver", "-debug" },
+			cmd = { "golangci-lint-langserver" },
 			root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
 			filetypes = { "go", "gomod" },
 			init_options = {
@@ -80,7 +80,5 @@ end
 -- Start the golangci-lint-langserver
 lspconfig.golangci_lint_ls.setup({
 	filetypes = { "go", "gomod" },
-	on_attach = function(client, bufnr)
-		print("golangci-lint-langserver attached to buffer " .. bufnr)
-	end,
+	on_attach = function(client, bufnr) end,
 })
