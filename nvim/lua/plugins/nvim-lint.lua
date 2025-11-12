@@ -3,10 +3,11 @@ return {
 	event = { "BufReadPost", "BufNewFile" },
 	config = function()
 		local lint = require("lint")
+
 		lint.linters_by_ft = {
 			javascript = { "eslint_d" },
 			-- lua = { "luacheck" },
-			go = { "golangcilint" },
+			-- go linting now handled by golangci-lint-langserver LSP
 			-- Add more file types and their respective linters
 		}
 

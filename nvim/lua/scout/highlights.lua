@@ -250,6 +250,12 @@ function M.setup(colors)
 		DiagnosticHint = { fg = colors.bright_aqua },
 		DiagnosticOk = { fg = colors.bright_green },
 
+		DiagnosticSignError = { fg = colors.bright_red, bg = colors.bg0 },
+		DiagnosticSignWarn = { fg = colors.bright_yellow, bg = colors.bg0 },
+		DiagnosticSignInfo = { fg = colors.bright_blue, bg = colors.bg0 },
+		DiagnosticSignHint = { fg = colors.bright_aqua, bg = colors.bg0 },
+		DiagnosticSignOk = { fg = colors.bright_green, bg = colors.bg0 },
+
 		DiagnosticUnderlineError = { sp = colors.bright_red, style = "undercurl" },
 		DiagnosticUnderlineWarn = { sp = colors.bright_yellow, style = "undercurl" },
 		DiagnosticUnderlineInfo = { sp = colors.bright_blue, style = "undercurl" },
