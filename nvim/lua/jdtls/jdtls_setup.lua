@@ -68,9 +68,46 @@ function M:setup()
         -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
         -- for a list of options
         settings = {
-            java = {},
+            java = {
+                format = {
+                    settings = {
+                        url = vim.fn.expand('~') .. '/java_formatting.xml',
+                    }
+                },
+                codeGeneration = {
+                    toString = {
+                        template =
+                        "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
+                    },
+                    useBlocks = true,
+                    generateComments = true,
+                    generateFinalModifiers = true, -- For addFinalModifier
+                },
+                cleanup = {
+                    actionsOnSave = {
+                        "lambdaExpressionFromAnonymousClass", -- For lambdaExpression
+                        "organizeImports",                    -- For organizeImports
+                    }
+                },
+                sources = {
+                    organizeImports = {
+                        starThreshold = 999,
+                        staticStarThreshold = 999
+                    }
+                },
+                imports = {
+                    gradle = {
+                        enabled = true
+                    },
+                    maven = {
+                        enabled = true
+                    },
+                    exclusions = {
+                        "*/test/**"
+                    }
+                }
+            }
         },
-
         -- Language server `initializationOptions`
         -- You need to extend the `bundles` with paths to jar files
         -- if you want to use additional eclipse.jdt.ls plugins.

@@ -16,3 +16,4 @@ vim.opt.guicursor = "n-v-c:block-blinkon500-blinkoff500,i-ci-ve:ver10-blinkon500
 vim.opt.cmdheight = 0
 vim.o.signcolumn = "auto:1"
 vim.o.foldcolumn = "0"
+vim.opt.colorcolumn = "120"
