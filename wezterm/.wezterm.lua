@@ -10,9 +10,9 @@ config.font = wezterm.font("Maple Mono NF", { weight = "Medium" })
 config.font_size = 12.0 -- Adjust the font size as needed
 
 -- Enable Kitty keyboard protocol for better key support in Neovim
-enable_kitty_keyboard = true
+config.enable_kitty_keyboard = true
+-- OSC 52 clipboard support is enabled by default in WezTerm
 config.force_reverse_video_cursor = false
-config.default_cursor_style = "BlinkingBlock"
 config.cursor_blink_rate = 500
 config.cursor_blink_ease_in = "Constant"
 config.cursor_blink_ease_out = "Constant"

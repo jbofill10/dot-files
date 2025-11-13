@@ -51,10 +51,11 @@ end
 
 -- Schedule the setting after `UiEnter` because it can increase startup-time.
 vim.schedule(function()
-  vim.opt.clipboard:append 'unnamedplus'
+  -- Use OSC 52 if inside tmux (both local and remote) or in SSH session
+  local in_tmux = os.getenv('TMUX') ~= nil
+  local in_ssh = os.getenv('SSH_CLIENT') ~= nil or os.getenv('SSH_TTY') ~= nil
 
-  -- Standard SSH session handling
-  if os.getenv('SSH_CLIENT') ~= nil or os.getenv('SSH_TTY') ~= nil then
+  if in_tmux or in_ssh then
     set_osc52_clipboard()
   else
     -- Check for WezTerm remote session asynchronously

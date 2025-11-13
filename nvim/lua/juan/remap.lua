@@ -14,14 +14,24 @@ vim.opt.cmdheight = 0
 
 -- movement
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open netrw" })
-vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down center" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up center" })
 vim.keymap.set("n", "n", "nzzzv", { desc = "search to bottom keep center" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "search to top keep center" })
 vim.keymap.set("n", "<C-j>", ":cnext<CR>zz", { desc = "Go to next on quickfix" })
 vim.keymap.set("n", "<C-k>", ":cprev<CR>zz", { desc = "Go to next on quickfix" })
-
+vim.keymap.set("n", "<leader>/", function()
+	require("Comment.api").toggle.linewise.current()
+end, { desc = "Toggle comment" })
+vim.keymap.set(
+	"x",
+	"<leader>/",
+	"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+	{ desc = "Toggle comment" }
+)
+-- clipboard
+vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
 -- lsp
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
@@ -33,7 +43,6 @@ vim.keymap.set("n", "gh", vim.lsp.buf.hover, { desc = "Hover documentation" })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-vim.keymap.set("n", "<leader>dee", vim.diagnostic.open_float, { desc = "Show diagnostics" })
 
 -- navigation
 vim.keymap.set(
