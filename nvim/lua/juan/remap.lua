@@ -20,6 +20,7 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "search to bottom keep center" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "search to top keep center" })
 vim.keymap.set("n", "<C-j>", ":cnext<CR>zz", { desc = "Go to next on quickfix" })
 vim.keymap.set("n", "<C-k>", ":cprev<CR>zz", { desc = "Go to next on quickfix" })
+-- commenting
 vim.keymap.set("n", "<leader>/", function()
 	require("Comment.api").toggle.linewise.current()
 end, { desc = "Toggle comment" })
@@ -29,6 +30,16 @@ vim.keymap.set(
 	"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
 	{ desc = "Toggle comment" }
 )
+-- git
+vim.keymap.set("n", "[G", ":Gitsigns prev_hunk<CR>", { desc = "Go to previous git hunk" })
+vim.keymap.set("n", "[g", ":Gitsigns next_hunk<CR>", { desc = "Go to previous git hunk" })
+vim.keymap.set("n", "<C-w>g", ":Gitsigns preview_hunk<CR>", { desc = "Preview git hunk" })
+vim.keymap.set("n", "<leader>gs", ":Neogit cwd=%:p:h kind=floating<CR>", { desc = "git status" })
+vim.keymap.set("n", "<leader>gr", ":Gitsigns reset_hunk<CR>", { desc = "Reset git hunk" })
+vim.keymap.set("n", "<leader>gb", ":Gitsigns setqflist target=attached<CR>", { desc = "Quickfix changes in file" })
+
+-- vim.keymap.set("n", "<leader>g"
+
 -- clipboard
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
@@ -127,12 +138,6 @@ vim.keymap.set("n", "zp", function()
 		vim.lsp.buf.hover()
 	end
 end, { desc = "Peek fold or show hover" })
-
--- git
-vim.keymap.set("n", "<leader>gs", ":Neogit cwd=%:p:h kind=floating<CR>", { desc = "git commit" })
-
-vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", { desc = "show inline blame" })
-vim.keymap.set("n", "<leader>gi", ":Gitsigns preview_hunk<CR>", { desc = "show diff popup" })
 
 -- ufo
 vim.keymap.set("n", "zR", require("ufo").openAllFolds)
