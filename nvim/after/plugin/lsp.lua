@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Enable LSP servers for their configured filetypes
 -- These servers are installed via Mason (ensure_installed in lua/plugins/mason-lsp.lua)
-vim.lsp.enable({ "lua_ls", "gopls", "vtsls" })
+vim.lsp.enable({ "lua_ls", "gopls", "vtsls", "snyk_ls" })
 
 -- Setup golangci-lint-langserver (requires lspconfig due to custom init_options)
 -- This runs alongside gopls to provide linting diagnostics
