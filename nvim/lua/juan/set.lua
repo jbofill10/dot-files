@@ -1,6 +1,6 @@
 ---@diagnostic disable: undefined-global
 
-vim.opt.nu = true
+vim.opt.rnu = true
 vim.opt.relativenumber = true
 
 vim.opt.wrap = false

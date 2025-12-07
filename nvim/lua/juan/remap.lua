@@ -16,6 +16,7 @@ vim.opt.cmdheight = 0
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open netrw" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down center" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up center" })
+vim.keymap.set("n", "<C-o>", "<C-o>zz", { desc = "Jump back (center)" })
 vim.keymap.set("n", "n", "nzzzv", { desc = "search to bottom keep center" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "search to top keep center" })
 vim.keymap.set("n", "<C-j>", ":cnext<CR>zz", { desc = "Go to next on quickfix" })
@@ -44,16 +45,57 @@ vim.keymap.set("n", "<leader>gb", ":Gitsigns setqflist target=attached<CR>", { d
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
 -- lsp
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+-- Helper function to center screen after LSP jumps (which are async)
+local function center_after_lsp()
+	vim.api.nvim_create_autocmd("CursorMoved", {
+		once = true,
+		callback = function()
+			vim.cmd("normal! zz")
+		end,
+	})
+end
+
+vim.keymap.set("n", "gd", function()
+	vim.lsp.buf.definition()
+	center_after_lsp()
+end, { desc = "Go to definition" })
+
+vim.keymap.set("n", "gD", function()
+	vim.lsp.buf.declaration()
+	center_after_lsp()
+end, { desc = "Go to declaration" })
+
+vim.keymap.set("n", "gi", function()
+	vim.lsp.buf.implementation()
+	center_after_lsp()
+end, { desc = "Go to implementation" })
+
 vim.keymap.set("n", "gr", function()
 	require("telescope.builtin").lsp_references({ show_line = false })
+	-- no zz here, Telescope takes over the window
 end, { desc = "Go to references" })
+
 vim.keymap.set("n", "gh", vim.lsp.buf.hover, { desc = "Hover documentation" })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+
+vim.keymap.set("n", "[d", function()
+	vim.diagnostic.goto_prev()
+	vim.cmd("normal! zz")
+end, { desc = "Previous diagnostic (centered)" })
+
+vim.keymap.set("n", "]d", function()
+	vim.diagnostic.goto_next()
+	vim.cmd("normal! zz")
+end, { desc = "Next diagnostic (centered)" })
+
+-- trouble.nvim
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Toggle trouble diagnostics" })
+
+vim.keymap.set("n", "<leader>xw", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Workspace diagnostics" })
+
+vim.keymap.set("n", "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Document diagnostics" })
+
+vim.keymap.set("n", "<leader>xq", "<cmd>Trouble quickfix toggle<cr>", { desc = "Quickfix list" })
 
 -- navigation
 vim.keymap.set(
