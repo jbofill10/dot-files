@@ -5,7 +5,7 @@ require("conform").setup({
 		python = { "isort", "black" },
 		-- You can customize some of the format options for the filetype (:help conform.format)
 		rust = { "rustfmt", lsp_format = "fallback" },
-		go = { "gofmt" },
+		go = { "goimports", "gofumpt" },
 		java = {},
 		-- Conform will run the first available formatter
 		javascript = { "prettierd", "prettier", stop_after_first = true },

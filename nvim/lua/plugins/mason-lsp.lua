@@ -10,6 +10,8 @@ return {
 			"golangci_lint_ls",
 			"google-java-format",
 			"prettierd",
+			"goimports",
+			"gofumpt",
 		}, -- Auto-install these LSP servers
 	},
 	dependencies = {
