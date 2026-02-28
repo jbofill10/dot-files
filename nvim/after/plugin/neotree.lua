@@ -1,9 +1,17 @@
 require("neo-tree").setup({
 	filesystem = {
-		filtered_items = {
-			visible = true,
-			hide_dotfiles = false,
-		},
+        follow_current_file = {
+        enabled = true,
+        -- Other options can be added here if needed
+    },
+    filtered_items = {
+        visible = true,
+        hide_dotfiles = false,
+        never_show = {
+            ".claude",
+            "CLAUDE.md",
+        }
+    },
 	},
 	event_handlers = {
 		{

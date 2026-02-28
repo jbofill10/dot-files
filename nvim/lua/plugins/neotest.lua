@@ -21,13 +21,12 @@ return {
 						testify_enabled = true,
 						dap_go_enabled = true, -- requires leoluz/nvim-dap-go
 						runner = "gotestsum",
-						go_test_args = {
-							"-v",
-							"-race",
-							"-count=1",
-							-- "-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out",
-						},
+                        go_test_args = { "-v", "-race", "-count=1", "-coverprofile=coverage.out" },
+                        log_level = vim.log.levels.DEBUG
+
 					}),
+                    require("neotest-java")({
+                    }),
 				},
 			})
 		end,

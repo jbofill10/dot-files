@@ -9,5 +9,8 @@ return {
         "ibhagwan/fzf-lua",          -- optional
         "echasnovski/mini.pick",     -- optional
     },
-    config = true
+    config = true,
+    integrations = {
+        diffview = true, -- enable diffview integration
+    }
 }

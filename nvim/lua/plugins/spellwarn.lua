@@ -1,0 +1,3 @@
+return {
+    "ravibrock/spellwarn.nvim",
+}

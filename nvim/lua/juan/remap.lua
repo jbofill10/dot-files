@@ -101,7 +101,7 @@ vim.keymap.set("n", "<leader>xq", "<cmd>Trouble quickfix toggle<cr>", { desc = "
 vim.keymap.set(
 	"n",
 	"<leader>e",
-	":Neotree source=filesystem position=float toggle<CR>",
+	":Neotree position=float reveal=true toggle=true<CR>",
 	{ desc = "Show file explorer" }
 )
 
@@ -132,6 +132,8 @@ vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer" })
 vim.keymap.set("n", "<leader>bn", ":bn<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>bp", ":bp<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<leader>v", ":vsplit<CR>", { desc = "Vertical split" })
+vim.keymap.set('n', '<leader>bb', '<cmd>buffer #<CR>', { desc = 'Go to last visted buffer' })
+
 
 vim.keymap.set("n", "<leader>cc", ":CopilotChatToggle<CR>", { desc = "Toggle Copilot Chat" })
 -- Additional copilot keymaps (Ctrl-based)
@@ -187,3 +189,7 @@ vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 
 -- generic langauge server stuff
 vim.keymap.set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", { desc = "Show code actions" })
+
+-- DiffView
+vim.keymap.set("n", "<leader>do", ":DiffviewOpen<CR>", { desc = "Open diff view for current changes" })
+vim.keymap.set("n", "<leader>dc", ":DiffviewClose<CR>", { desc = "Close current diff view tab" })

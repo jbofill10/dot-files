@@ -55,7 +55,7 @@ vim.lsp.config("gopls", {
 				rangeVariableTypes = true,
 			},
 			analyses = {
-				fieldalignment = true,
+				-- fieldalignment = true,
 				nilness = true,
 				unusedparams = true,
 				unusedwrite = true,
@@ -70,15 +70,15 @@ vim.lsp.config("gopls", {
 	},
 })
 
--- Global LSP configuration for all servers
-vim.lsp.config("*", {
-	-- Capabilities are set automatically by blink.cmp
-	-- on_attach handler for any server-specific setup
-	on_attach = function(client, bufnr)
-		-- Additional per-buffer setup can go here if needed
-		-- Keymaps are already set globally in lua/juan/remap.lua
-	end,
-})
+-- -- Global LSP configuration for all servers
+-- vim.lsp.config("*", {
+-- 	-- Capabilities are set automatically by blink.cmp
+-- 	-- on_attach handler for any server-specific setup
+-- 	on_attach = function(client, bufnr)
+-- 		-- Additional per-buffer setup can go here if needed
+-- 		-- Keymaps are already set globally in lua/juan/remap.lua
+-- 	end,
+-- })
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "java",
@@ -105,7 +105,7 @@ if not configs.golangci_lint_ls then
 			filetypes = { "go", "gomod" },
 			init_options = {
 				command = {
-					"golangci-lint",
+					"/opt/homebrew/bin/golangci-lint",
 					"run",
 					"--output.json.path",
 					"stdout",

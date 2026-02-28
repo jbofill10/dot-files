@@ -12,6 +12,7 @@ return {
 			"prettierd",
 			"goimports",
 			"gofumpt",
+            "snyk_ls"
 		}, -- Auto-install these LSP servers
 	},
 	dependencies = {

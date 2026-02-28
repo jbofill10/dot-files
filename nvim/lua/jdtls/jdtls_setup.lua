@@ -5,6 +5,8 @@ function M:setup()
     local workspace_dir = vim.fn.stdpath("data") ..
         package.config:sub(1, 1) .. "jdtls-workspace" .. package.config:sub(1, 1) .. project_name
     local os_name = vim.loop.os_uname().sysname
+    local lombok_jar = vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar"
+
     local config = {
         -- The command that starts the language server
         -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
@@ -25,6 +27,7 @@ function M:setup()
             "java.base/java.util=ALL-UNNAMED",
             "--add-opens",
             "java.base/java.lang=ALL-UNNAMED",
+            "-javaagent:" .. lombok_jar,
 
             -- 💀
             "-jar",

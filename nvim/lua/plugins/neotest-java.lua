@@ -17,14 +17,5 @@ return {
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
         },
-        config = function()
-            require("neotest").setup({
-                adapters = {
-                    require("neotest-java")({
-                        -- config here
-                    }),
-                },
-            })
-        end,
     }
 }
