@@ -1,0 +1,29 @@
+# Conversation history
+history.jsonl
+
+# Per-project memory (may contain sensitive project details)
+projects/
+
+# Plugin state and caches
+plugins/
+cache/
+paste-cache/
+stats-cache.json
+statsig/
+
+# Session and runtime state
+debug/
+session-env/
+shell-snapshots/
+file-history/
+plans/
+tasks/
+todos/
+backups/
+ide/
+
+# Telemetry
+telemetry/
+
+# macOS
+.DS_Store

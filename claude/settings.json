@@ -1,0 +1,12 @@
+{
+  "attribution": {
+    "commit": ""
+  },
+  "includeCoAuthoredBy": false,
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "gitAttribution": false
+}
