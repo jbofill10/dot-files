@@ -1,0 +1,13 @@
+# Repo-wide
+.DS_Store
+
+# claude/: allowlist approach — only explicitly named paths are tracked.
+# Anything new dropped into claude/ is ignored by default.
+claude/*
+!claude/CLAUDE.md
+!claude/settings.json
+!claude/statusline-command.sh
+!claude/agents
+!claude/commands
+!claude/hooks
+!claude/skills
