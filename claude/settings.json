@@ -3,10 +3,22 @@
     "commit": ""
   },
   "includeCoAuthoredBy": false,
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "hooks": {},
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh",
+    "refreshInterval": 30
+  },
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true
   },
+  "effortLevel": "medium",
   "skipDangerousModePermissionPrompt": true,
-  "gitAttribution": false
+  "skipAutoPermissionPrompt": true,
+  "gitAttribution": false,
+  "model": "opus[1m]"
 }
